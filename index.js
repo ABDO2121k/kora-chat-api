@@ -11,7 +11,8 @@ dotenv.config();
 const app = express();
 app.use(express.json())
 app.use(morgan("dev"))
-app.use(cors())
+const domaine = process.env.DOMAIN_NAME;
+app.use(cors({ origin: domaine, credentials: true }));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
